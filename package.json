@@ -33,5 +33,10 @@
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
   }
 }
