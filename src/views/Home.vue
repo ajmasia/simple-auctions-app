@@ -1,12 +1,19 @@
 <template>
-  <div>
-    <h1>Simple Auction App</h1>
-    <h3>Playing with vue.js</h3>
+  <div class="pt-5">
+    <b-jumbotron
+      header="Simple Auction App"
+      lead="Playing with vue.js"
+    ></b-jumbotron>
+    <Auction />
   </div>
 </template>
 
 <script>
+import Auction from '../components/Auction'
 export default {
   name: 'home',
+  components: {
+    Auction,
+  },
 }
 </script>
