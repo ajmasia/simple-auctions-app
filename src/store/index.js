@@ -16,7 +16,6 @@ export default new Vuex.Store({
         active: false,
         disabled: true,
       },
-      success: false,
     },
   },
   mutations: {
