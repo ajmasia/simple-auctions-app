@@ -1,9 +1,11 @@
 <template>
   <div class="pt-5">
-    <b-jumbotron
-      header="Simple Auction App"
-      lead="Playing with vue.js"
-    ></b-jumbotron>
+    <div class="col">
+      <b-jumbotron
+        header="Auction App"
+        lead="A simple up to play with vue.js"
+      ></b-jumbotron>
+    </div>
     <Auction />
   </div>
 </template>
