@@ -1,27 +1,35 @@
 <template>
   <div>
-    <b-card no-body>
-      <b-tabs pills card>
-        <b-tab
-          title="Buyer"
-          :disabled="parseDisabledValue('buyer')"
-          :active="parseActiveValue('buyer')"
-        >
-          <b-card-text>
-            <InLineForm labelText="Offer" model="buyer" :tabs="tabs" />
-          </b-card-text>
-        </b-tab>
-        <b-tab
-          title="Seller"
-          :disabled="parseDisabledValue('seller')"
-          :active="parseActiveValue('seller')"
-        >
-          <b-card-text>
-            <InLineForm labelText="Minimun Offer" model="seller" :tabs="tabs" />
-          </b-card-text>
-        </b-tab>
-      </b-tabs>
-    </b-card>
+    <div class="d-flex justify-content-center pt-5">
+      <div class="col-md-8 col-lg-6 col-12">
+        <b-card no-body>
+          <b-tabs pills card>
+            <b-tab
+              title="Buyer"
+              :disabled="auction['buyer'].disabled"
+              :active="auction['buyer'].active"
+            >
+              <b-card-text>
+                <InLineForm labelText="Offer" model="buyer" :tabs="tabs" />
+              </b-card-text>
+            </b-tab>
+            <b-tab
+              title="Seller"
+              :disabled="auction['seller'].disabled"
+              :active="auction['seller'].active"
+            >
+              <b-card-text>
+                <InLineForm
+                  labelText="Minimun Offer"
+                  model="seller"
+                  :tabs="tabs"
+                />
+              </b-card-text>
+            </b-tab>
+          </b-tabs>
+        </b-card>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -41,12 +49,6 @@ export default {
   },
   computed: {
     ...mapState(['auction']),
-    parseActiveValue() {
-      return model => this.auction[model].active
-    },
-    parseDisabledValue() {
-      return model => this.auction[model].disabled
-    },
   },
   methods: {},
 }

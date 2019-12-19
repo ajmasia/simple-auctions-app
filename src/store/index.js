@@ -16,10 +16,11 @@ export default new Vuex.Store({
         active: false,
         disabled: true,
       },
+      success: false,
     },
   },
   mutations: {
-    changeTabState(state, tabs) {
+    changeActiveTab(state, tabs) {
       tabs.forEach(tab => {
         state.auction[tab].active
           ? (state.auction[tab].active = false)
@@ -28,6 +29,12 @@ export default new Vuex.Store({
           ? (state.auction[tab].disabled = false)
           : (state.auction[tab].disabled = true)
       })
+    },
+    setFormValue(state, payload) {
+      state.auction[payload.model].value = payload.value
+    },
+    setSuccess(state, payload) {
+      state.auction.success = payload
     },
   },
   actions: {},

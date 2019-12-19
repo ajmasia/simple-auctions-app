@@ -1,14 +1,24 @@
 <template>
   <div>
-    <b-form inline>
-      <b-input
-        :id="model"
-        class="mb-2 mr-sm-2 mb-sm-0"
-        :placeholder="labelText"
-        v-model="auction[model].value"
-      ></b-input>
-
-      <b-button variant="primary" v-on:click="onSave(model, tabs)">
+    <b-form class="p-3" @submit.stop.prevent>
+      <div>
+        <b-input
+          class="mb-2"
+          v-model="$v.value.$model"
+          :id="model"
+          :placeholder="labelText"
+          :state="$v.value.$dirty ? !$v.value.$error : null"
+        ></b-input>
+        <b-form-invalid-feedback id="input-2-live-feedback">
+          {{ getValidateMessage }}
+        </b-form-invalid-feedback>
+      </div>
+      <b-button
+        class="btn-block mt-4"
+        :disabled="$v.value.$invalid"
+        variant="primary"
+        v-on:click="onSave(model, tabs)"
+      >
         Save
       </b-button>
     </b-form>
@@ -17,27 +27,64 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import { required, decimal, minValue } from 'vuelidate/lib/validators'
+
 export default {
   name: 'InLineForm',
+  data() {
+    return {
+      value: null,
+    }
+  },
   props: {
     labelText: String,
     model: String,
     tabs: Array,
   },
+  validations: {
+    value: {
+      required,
+      decimal,
+      minValue: minValue(0),
+    },
+  },
   computed: {
     ...mapState(['auction']),
+    // eslint-disable-next-line vue/return-in-computed-property
+    getValidateMessage() {
+      if (this.$v.value.$error) {
+        for (let key in this.$options.messages) {
+          if (this.$v.value[key] === false) {
+            return this.$options.messages[key]
+          }
+        }
+      } else {
+        return null
+      }
+    },
   },
   methods: {
-    ...mapMutations(['changeTabState']),
+    ...mapMutations(['changeActiveTab', 'setFormValue', 'setSuccess']),
+
     onSave(model, tabs) {
-      this.changeTabState(tabs)
+      this.$v.value.$touch()
+      if (this.$v.value.$invalid) {
+        return
+      }
+      this.setFormValue({ value: this.value, model: this.model })
+      this.changeActiveTab(tabs)
       if (model === 'seller') {
         parseInt(this.auction.buyer.value, 10) >=
         parseInt(this.auction.seller.value, 10)
-          ? console.log('Sold item ')
-          : console.log('Very low price')
+          ? this.setSuccess(true)
+          : this.setSuccess(false)
       }
     },
+  },
+  messages: {
+    required: 'This field is required',
+    decimal: 'May only contain numbers',
+    minValue: 'May only contain positive numbers',
   },
 }
 </script>
