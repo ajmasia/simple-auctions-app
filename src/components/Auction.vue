@@ -42,10 +42,10 @@ export default {
   computed: {
     ...mapState(['auction']),
     parseActiveValue() {
-      return model => (this.auction[model].active ? 'active' : null)
+      return model => this.auction[model].active
     },
     parseDisabledValue() {
-      return model => (this.auction[model].disabled ? 'disabled' : null)
+      return model => this.auction[model].disabled
     },
   },
   methods: {},

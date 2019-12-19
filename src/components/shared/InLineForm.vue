@@ -8,7 +8,7 @@
         v-model="auction[model].value"
       ></b-input>
 
-      <b-button variant="primary" v-on:click="changeTabState(tabs)">
+      <b-button variant="primary" v-on:click="onSave(model, tabs)">
         Save
       </b-button>
     </b-form>
@@ -29,6 +29,15 @@ export default {
   },
   methods: {
     ...mapMutations(['changeTabState']),
+    onSave(model, tabs) {
+      this.changeTabState(tabs)
+      if (model === 'seller') {
+        parseInt(this.auction.buyer.value, 10) >=
+        parseInt(this.auction.seller.value, 10)
+          ? console.log('Sold item ')
+          : console.log('Very low price')
+      }
+    },
   },
 }
 </script>
