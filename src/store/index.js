@@ -16,7 +16,7 @@ export default new Vuex.Store({
         active: false,
         disabled: true,
       },
-      success: false,
+      success: null,
     },
   },
   mutations: {
@@ -39,4 +39,7 @@ export default new Vuex.Store({
   },
   actions: {},
   modules: {},
+  getters: {
+    getSuccess: state => () => state.auction.success,
+  },
 })
