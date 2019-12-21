@@ -26,7 +26,12 @@
         </b-card>
       </div>
     </div>
-    <ResultModal :title="modal.title" :content="modal.content" ref="resultModal" />
+    <ResultModal
+      :title="modal.title"
+      :content="modal.content"
+      :onFinish="resetApp"
+      ref="resultModal"
+    />
   </div>
 </template>
 
@@ -45,8 +50,6 @@ export default {
   data: function() {
     return {
       tabs: ['buyer', 'seller'],
-      errorModal: false,
-      successModal: false,
       modal: {
         title: '',
         content: '',
@@ -61,6 +64,12 @@ export default {
     showModal(modal) {
       this.$refs[modal].show()
     },
+    resetApp() {
+      console.log('**** APP RESET')
+      this.initializeAppState()
+      this.changeActiveTab(this.tabs)
+      this.$refs.resultModal.$refs['modal'].toggle('result-modal')
+    },
   },
   mounted() {
     this.$store.watch(
@@ -70,13 +79,16 @@ export default {
         this.modal.content = `The buyer offer you: ${buyer.value} 
         and yor minimun acceptance price is ${seller.value}. 
         The difference is ${buyer.value - seller.value}`
+        console.log('**** RESULT CHANGE', n)
+        console.log('**** MODAL', this.$refs.resultModal.$refs['modal'])
         if (n) {
           this.modal.title = 'Success'
-          this.$refs.resultModal.$refs['modal'].show()
+          this.$refs.resultModal.$refs['modal'].show('result-modal')
         }
         if (!n) {
+          console.log('**** HERE')
           this.modal.title = 'Error'
-          this.$refs.resultModal.$refs['modal'].show()
+          this.$refs.resultModal.$refs['modal'].show('result-modal')
         }
       },
       { deep: true }
