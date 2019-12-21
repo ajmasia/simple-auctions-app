@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import openWeatherApi from '../api/openWeather'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     auction: {},
+    weather: {},
   },
   mutations: {
     changeActiveTab(state, tabs) {
@@ -27,8 +29,23 @@ export default new Vuex.Store({
     initializeAppState(state, payload) {
       state.auction = payload
     },
+    GET_WEATHER_DATA(state) {
+      openWeatherApi
+        .getData()
+        .then(response => {
+          state.weather = response.data
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log('There was an error:', error)
+        })
+    },
   },
-  actions: {},
+  actions: {
+    getWeather({ commit }) {
+      commit('GET_WEATHER_DATA')
+    },
+  },
   modules: {},
   getters: {
     getSuccess: state => () => state.auction.success,
