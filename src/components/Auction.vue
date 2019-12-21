@@ -19,7 +19,11 @@
               :active="auction['seller'].active"
             >
               <b-card-text>
-                <InLineForm labelText="Minimun Offer" model="seller" :tabs="tabs" />
+                <InLineForm
+                  labelText="Minimun Offer"
+                  model="seller"
+                  :tabs="tabs"
+                />
               </b-card-text>
             </b-tab>
           </b-tabs>

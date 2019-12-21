@@ -9,14 +9,18 @@
           :placeholder="labelText"
           :state="$v.value.$dirty ? !$v.value.$error : null"
         ></b-input>
-        <b-form-invalid-feedback id="input-2-live-feedback">{{ getValidateMessage }}</b-form-invalid-feedback>
+        <b-form-invalid-feedback id="input-2-live-feedback">
+          {{ getValidateMessage }}
+        </b-form-invalid-feedback>
       </div>
       <b-button
         class="btn-block mt-4"
         :disabled="$v.value.$invalid"
         variant="primary"
         v-on:click="onSave(model, tabs)"
-      >Save</b-button>
+      >
+        Save
+      </b-button>
     </b-form>
   </div>
 </template>
