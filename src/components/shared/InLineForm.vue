@@ -7,8 +7,10 @@
           v-model="$v.value.$model"
           :id="model"
           :placeholder="labelText"
-          :state="$v.value.$dirty ? !$v.value.$error : null"
         ></b-input>
+        <b-form-text id="password-help-block">
+          Please introduce a value in {{ currency }}
+        </b-form-text>
         <b-form-invalid-feedback id="input-2-live-feedback">
           {{ getValidateMessage }}
         </b-form-invalid-feedback>
@@ -28,12 +30,13 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import { required, decimal, minValue } from 'vuelidate/lib/validators'
-
+import { appConfig } from '../../../config.js'
 export default {
   name: 'InLineForm',
   data() {
     return {
       value: null,
+      currency: appConfig.currency,
     }
   },
   props: {
@@ -80,10 +83,10 @@ export default {
           this.auction.seller.value !== null
         console.log('**** ACTION_RESULT', auctionResult)
         this.setSuccess(auctionResult)
-        // this.value = ''
       } else {
         this.changeActiveTab(tabs)
       }
+      this.value = null
     },
   },
   messages: {
