@@ -30,26 +30,65 @@
         </b-card>
       </div>
     </div>
+    <ResultModal
+      :title="modal.title"
+      :content="modal.content"
+      ref="resultModal"
+    />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import InLineForm from './shared/InLineForm'
+import ResultModal from './shared/Modal'
 
 export default {
   name: 'Auction',
   components: {
     InLineForm,
+    ResultModal,
   },
+
   data: function() {
     return {
       tabs: ['buyer', 'seller'],
+      errorModal: false,
+      successModal: false,
+      modal: {
+        title: 'AAAA',
+        content: 'AAAA',
+      },
     }
   },
   computed: {
     ...mapState(['auction']),
   },
-  methods: {},
+  methods: {
+    ...mapMutations(['setSuccess']),
+    showModal(modal) {
+      this.$refs[modal].show()
+    },
+  },
+  mounted() {
+    this.$store.watch(
+      this.$store.getters.getSuccess,
+      n => {
+        console.log(n)
+        if (n) {
+          this.modal.title = 'Success'
+          this.modal.content = '<b>You win the auction!</b>'
+          this.$refs.resultModal.$refs['modal'].show()
+        }
+        if (!n) {
+          this.modal.title = 'Error'
+          this.modal.content = 'You win the auction!'
+          this.$refs.resultModal.$refs['modal'].show()
+        }
+        // this.setSuccess(null)
+      },
+      { deep: true }
+    )
+  },
 }
 </script>

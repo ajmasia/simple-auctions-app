@@ -72,12 +72,14 @@ export default {
         return
       }
       this.setFormValue({ value: this.value, model: this.model })
-      this.changeActiveTab(tabs)
       if (model === 'seller') {
-        parseInt(this.auction.buyer.value, 10) >=
-        parseInt(this.auction.seller.value, 10)
-          ? this.setSuccess(true)
-          : this.setSuccess(false)
+        const auctionResult =
+          parseInt(this.auction.buyer.value, 10) >=
+            parseInt(this.auction.seller.value, 10) &&
+          this.auction.seller.value !== null
+        this.setSuccess(auctionResult)
+      } else {
+        this.changeActiveTab(tabs)
       }
     },
   },
