@@ -1,23 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { initialState } from './model'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    auction: {
-      buyer: {
-        value: null,
-        active: true,
-        disabled: false,
-      },
-      seller: {
-        value: null,
-        active: false,
-        disabled: true,
-      },
-      success: null,
-    },
+    auction: {},
   },
   mutations: {
     changeActiveTab(state, tabs) {
@@ -36,10 +25,14 @@ export default new Vuex.Store({
     setSuccess(state, payload) {
       state.auction.success = payload
     },
+    initializeAppState(state) {
+      state.auction = initialState.auction
+    },
   },
   actions: {},
   modules: {},
   getters: {
-    getSuccess: state => () => state.auction.success,
+    getBuyerValue: state => () => state.buyer.value,
+    getSellerValue: state => () => state.seller.value,
   },
 })
