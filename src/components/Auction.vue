@@ -19,22 +19,14 @@
               :active="auction['seller'].active"
             >
               <b-card-text>
-                <InLineForm
-                  labelText="Minimun Offer"
-                  model="seller"
-                  :tabs="tabs"
-                />
+                <InLineForm labelText="Minimun Offer" model="seller" :tabs="tabs" />
               </b-card-text>
             </b-tab>
           </b-tabs>
         </b-card>
       </div>
     </div>
-    <ResultModal
-      :title="modal.title"
-      :content="modal.content"
-      ref="resultModal"
-    />
+    <ResultModal :title="modal.title" :content="modal.content" ref="resultModal" />
   </div>
 </template>
 
@@ -56,8 +48,8 @@ export default {
       errorModal: false,
       successModal: false,
       modal: {
-        title: 'AAAA',
-        content: 'AAAA',
+        title: '',
+        content: '',
       },
     }
   },
@@ -65,7 +57,7 @@ export default {
     ...mapState(['auction']),
   },
   methods: {
-    ...mapMutations(['setSuccess']),
+    ...mapMutations(['changeActiveTab', 'initializeAppState']),
     showModal(modal) {
       this.$refs[modal].show()
     },
@@ -74,18 +66,18 @@ export default {
     this.$store.watch(
       this.$store.getters.getSuccess,
       n => {
-        console.log(n)
+        const { buyer, seller } = this.auction
+        this.modal.content = `The buyer offer you: ${buyer.value} 
+        and yor minimun acceptance price is ${seller.value}. 
+        The difference is ${buyer.value - seller.value}`
         if (n) {
           this.modal.title = 'Success'
-          this.modal.content = '<b>You win the auction!</b>'
           this.$refs.resultModal.$refs['modal'].show()
         }
         if (!n) {
           this.modal.title = 'Error'
-          this.modal.content = 'You win the auction!'
           this.$refs.resultModal.$refs['modal'].show()
         }
-        // this.setSuccess(null)
       },
       { deep: true }
     )

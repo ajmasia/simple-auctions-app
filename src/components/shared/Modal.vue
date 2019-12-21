@@ -11,9 +11,5 @@ export default {
     title: String,
     content: String,
   },
-
-  created() {
-    console.log(this.title, this.content)
-  },
 }
 </script>

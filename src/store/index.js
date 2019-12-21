@@ -32,6 +32,7 @@ export default new Vuex.Store({
   actions: {},
   modules: {},
   getters: {
+    getSuccess: state => () => state.auction.success,
     getBuyerValue: state => () => state.buyer.value,
     getSellerValue: state => () => state.seller.value,
   },

@@ -12,6 +12,7 @@ export default {
     ...mapMutations(['initializeAppState']),
   },
   created() {
+    console.log('**** APP CREATED')
     this.initializeAppState()
   },
 }
