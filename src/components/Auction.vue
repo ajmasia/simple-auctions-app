@@ -34,6 +34,7 @@
       :title="modal.title"
       :content="modal.content"
       :onFinish="resetApp"
+      :weatherData="getWeatherData"
       ref="resultModal"
     />
   </div>
@@ -45,6 +46,7 @@ import InLineForm from './shared/InLineForm'
 import ResultModal from './shared/Modal'
 import { initialState } from '../store/model.js'
 import { currencyFormatter } from '../tools/index.js'
+import { appConfig } from '../../config.js'
 
 export default {
   name: 'Auction',
@@ -63,7 +65,20 @@ export default {
     }
   },
   computed: {
-    ...mapState(['auction']),
+    ...mapState(['auction', 'weather']),
+    getWeatherData(state) {
+      const { name, main } = state.weather
+      const tempUnit = appConfig.tempUnit
+      console.log(appConfig)
+      return {
+        city: name,
+        temp: main,
+        tempUnit,
+      }
+    },
+    getTemp(state) {
+      return state.weather.main.id
+    },
   },
   methods: {
     ...mapMutations(['changeActiveTab', 'initializeAppState']),
@@ -76,6 +91,9 @@ export default {
       this.changeActiveTab(this.tabs)
       this.$refs.resultModal.$refs['modal'].toggle('result-modal')
     },
+  },
+  created() {
+    this.$store.dispatch('getWeather')
   },
   mounted() {
     this.$store.watch(

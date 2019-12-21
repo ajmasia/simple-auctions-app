@@ -84,6 +84,7 @@ export default {
         console.log('**** ACTION_RESULT', auctionResult)
         this.setSuccess(auctionResult)
       } else {
+        console.log('**** BUYER CLICK')
         this.changeActiveTab(tabs)
       }
       this.value = null
