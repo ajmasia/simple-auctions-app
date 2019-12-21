@@ -43,6 +43,7 @@
 import { mapState, mapMutations } from 'vuex'
 import InLineForm from './shared/InLineForm'
 import ResultModal from './shared/Modal'
+import { initialState } from '../store/model.js'
 
 export default {
   name: 'Auction',
@@ -70,7 +71,7 @@ export default {
     },
     resetApp() {
       console.log('**** APP RESET')
-      this.initializeAppState()
+      this.initializeAppState(initialState.auction)
       this.changeActiveTab(this.tabs)
       this.$refs.resultModal.$refs['modal'].toggle('result-modal')
     },
@@ -80,20 +81,21 @@ export default {
       this.$store.getters.getSuccess,
       n => {
         const { buyer, seller } = this.auction
-        this.modal.content = `The buyer offer you: ${buyer.value} 
-        and yor minimun acceptance price is ${seller.value}. 
+        this.modal.content = `The buyer offer you: ${buyer.value}
+        and yor minimun acceptance price is ${seller.value}.
         The difference is ${buyer.value - seller.value}`
         console.log('**** RESULT CHANGE', n)
         console.log('**** MODAL', this.$refs.resultModal.$refs['modal'])
         if (n) {
           this.modal.title = 'Success'
-          this.$refs.resultModal.$refs['modal'].show('result-modal')
+          return this.$refs.resultModal.$refs['modal'].show('result-modal')
         }
-        if (!n) {
+        if (n === false) {
           console.log('**** HERE')
           this.modal.title = 'Error'
-          this.$refs.resultModal.$refs['modal'].show('result-modal')
+          return this.$refs.resultModal.$refs['modal'].show('result-modal')
         }
+        return
       },
       { deep: true }
     )

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { initialState } from './model'
 
 Vue.use(Vuex)
 
@@ -25,8 +24,8 @@ export default new Vuex.Store({
     setSuccess(state, payload) {
       state.auction.success = payload
     },
-    initializeAppState(state) {
-      state.auction = initialState.auction
+    initializeAppState(state, payload) {
+      state.auction = payload
     },
   },
   actions: {},
