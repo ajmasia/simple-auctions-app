@@ -2,8 +2,8 @@
   <div class="pt-5">
     <div class="col">
       <b-jumbotron
-        header="Auction App"
-        lead="A simple up to play with vue.js"
+        :header="$t('appTitle')"
+        :lead="$t('appSubtitle')"
       ></b-jumbotron>
     </div>
     <Auction />

@@ -9,7 +9,7 @@
           :placeholder="labelText"
         ></b-input>
         <b-form-text id="password-help-block">
-          Please introduce a value in {{ currency }}
+          {{ $t('input_description') }} {{ currency }}
         </b-form-text>
         <b-form-invalid-feedback id="input-2-live-feedback">
           {{ getValidateMessage }}
@@ -21,7 +21,7 @@
         variant="primary"
         v-on:click="onSave(model, tabs)"
       >
-        Save
+        {{ $t('save_button') }}
       </b-button>
     </b-form>
   </div>

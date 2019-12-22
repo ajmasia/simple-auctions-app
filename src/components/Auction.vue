@@ -1,26 +1,38 @@
 <template>
   <div>
-    <div class="d-flex justify-content-center pt-5">
+    <div class="d-flex justify-content-center pt-3">
       <div class="col-md-8 col-lg-6 col-12">
+        <b-form-select
+          v-model="selectedLanguage"
+          :options="languages"
+          class="mb-3"
+          value-field="locale"
+          text-field="text"
+          disabled-field="notEnabled"
+        ></b-form-select>
         <b-card no-body>
           <b-tabs pills card>
             <b-tab
-              title="Buyer"
+              :title="$t('buyer')"
               :disabled="auction['buyer'].disabled"
               :active="auction['buyer'].active"
             >
               <b-card-text>
-                <InLineForm labelText="Offer" model="buyer" :tabs="tabs" />
+                <InLineForm
+                  :labelText="$t('input_buyer_placeholder')"
+                  model="buyer"
+                  :tabs="tabs"
+                />
               </b-card-text>
             </b-tab>
             <b-tab
-              title="Seller"
+              :title="$t('seller')"
               :disabled="auction['seller'].disabled"
               :active="auction['seller'].active"
             >
               <b-card-text>
                 <InLineForm
-                  labelText="Minimun Offer"
+                  :labelText="$t('input_seller_placeholder')"
                   model="seller"
                   :tabs="tabs"
                 />
@@ -41,6 +53,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { mapState, mapMutations } from 'vuex'
 import InLineForm from './shared/InLineForm'
 import ResultModal from './shared/Modal'
@@ -62,10 +75,11 @@ export default {
         title: '',
         content: '',
       },
+      selectedLanguage: this.$store.state.curLanguage,
     }
   },
   computed: {
-    ...mapState(['auction', 'weather']),
+    ...mapState(['auction', 'weather', 'languages']),
     getWeatherData(state) {
       const { name, main } = state.weather
       const tempUnit = appConfig.tempUnit
@@ -92,8 +106,16 @@ export default {
       this.$refs.resultModal.$refs['modal'].toggle('result-modal')
     },
   },
+  watch: {
+    selectedLanguage(newLang) {
+      console.log('new lang selected', newLang)
+      Vue.i18n.set(newLang)
+      this.$store.commit('setLanguage', newLang)
+    },
+  },
   created() {
     this.$store.dispatch('getWeather')
+    Vue.i18n.set(this.$store.state.curLanguage)
   },
   mounted() {
     this.$store.watch(
