@@ -7,6 +7,7 @@
           v-model="$v.value.$model"
           :id="model"
           :placeholder="labelText"
+          :state="$v.value.$dirty ? !$v.value.$error : null"
         ></b-input>
         <b-form-text id="password-help-block">
           {{ $t('input_description') }} {{ currency }}
@@ -88,6 +89,7 @@ export default {
         this.changeActiveTab(tabs)
       }
       this.value = null
+      this.$v.$reset()
     },
   },
   messages: {
