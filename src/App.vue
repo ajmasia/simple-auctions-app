@@ -5,7 +5,7 @@
 </template>
 <script>
 import { mapMutations } from 'vuex'
-import { initialState } from './store/model.js'
+import { initialState } from './store/store.model.js'
 
 export default {
   name: 'App',

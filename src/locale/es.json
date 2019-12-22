@@ -12,5 +12,6 @@
   "text_01": "El comprador ofrecio",
   "text_02": "y tu precio mínimo fue de",
   "text_03": "La diferencia es",
-  "language_selection": "Por favor, selecciona tu idioma preferido"
+  "language_selection": "Por favor, selecciona tu idioma preferido",
+  "api_service_error": "Error de conexion a OpenWeather"
 }

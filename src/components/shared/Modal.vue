@@ -10,10 +10,23 @@
     <p class="my-4">{{ content }}</p>
     <template v-slot:modal-footer>
       <div class="w-100">
-        <p class="float-left">
-          Temperature in {{ weatherData.city }}: {{ weatherData.temp.temp }}
+        <b-spinner
+          type="grow"
+          label="Spinning"
+          v-if="weatherData === null"
+        ></b-spinner>
+        <p
+          class="float-left"
+          v-if="weatherError === '' && weatherData !== null"
+        >
+          Temperature in {{ weatherData.city }}:
+          {{ weatherData.temp ? weatherData.temp.temp : '' }}
           {{ weatherData.tempUnit }}
         </p>
+        <p class="float-left" v-if="weatherError !== ''">
+          {{ weatherError }}
+        </p>
+
         <b-button size="sm" class="float-right" @click="onFinish">
           Finish
         </b-button>
@@ -30,6 +43,7 @@ export default {
     content: String,
     onFinish: Function,
     weatherData: Object,
+    weatherError: String,
   },
 }
 </script>

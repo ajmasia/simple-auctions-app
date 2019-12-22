@@ -53,6 +53,7 @@
       :content="modal.content"
       :onFinish="resetApp"
       :weatherData="getWeatherData"
+      :weatherError="weatherError"
       ref="resultModal"
     />
   </div>
@@ -63,7 +64,7 @@ import Vue from 'vue'
 import { mapState, mapMutations } from 'vuex'
 import InLineForm from './shared/InLineForm'
 import ResultModal from './shared/Modal'
-import { initialState } from '../store/model.js'
+import { initialState } from '../store/store.model.js'
 import { currencyFormatter } from '../tools/index.js'
 import { appConfig } from '../../config.js'
 
@@ -85,19 +86,18 @@ export default {
     }
   },
   computed: {
-    ...mapState(['auction', 'weather', 'languages']),
+    ...mapState(['auction', 'weather', 'languages', 'weatherError']),
     getWeatherData(state) {
       const { name, main } = state.weather
       const tempUnit = appConfig.tempUnit
       console.log(appConfig)
-      return {
-        city: name,
-        temp: main,
-        tempUnit,
-      }
-    },
-    getTemp(state) {
-      return state.weather.main.id
+      return Object.keys(state.weather).length > 0
+        ? {
+            city: name ? name : '',
+            temp: main ? main : '',
+            tempUnit,
+          }
+        : null
     },
   },
   methods: {
@@ -120,14 +120,20 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('getWeather')
     Vue.i18n.set(this.$store.state.curLanguage)
+    // Uncomment the next line if you want to have openWeather information from the beginning
+    // this.$store.dispatch('getWeather')
   },
   mounted() {
     this.$store.watch(
       this.$store.getters.getSuccess,
       n => {
         const { buyer, seller } = this.auction
+
+        // Delete seTimeout method to get data whitout delay
+        setTimeout(() => {
+          this.$store.dispatch('getWeather')
+        }, 3000)
         this.modal.content = `${this.$t('text_01')}: ${currencyFormatter.format(
           buyer.value
         )} ${this.$t('text_02')} ${currencyFormatter.format(
