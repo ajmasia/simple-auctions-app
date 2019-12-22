@@ -27,7 +27,7 @@ export default new Vuex.Store({
       state.auction.success = payload
     },
     initializeAppState(state, payload) {
-      state.auction = payload
+      state.auction = { ...state.auction, ...payload }
     },
     GET_WEATHER_DATA(state) {
       openWeatherApi

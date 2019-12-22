@@ -10,6 +10,6 @@ export const initialState = {
       active: false,
       disabled: true,
     },
-    success: false,
+    success: null,
   },
 }
