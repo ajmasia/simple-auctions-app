@@ -122,22 +122,22 @@ export default {
       this.$store.getters.getSuccess,
       n => {
         const { buyer, seller } = this.auction
-        this.modal.content = `The buyer offer you: ${currencyFormatter.format(
+        this.modal.content = `${this.$t('text_01')}: ${currencyFormatter.format(
           buyer.value
-        )} and yor minimun acceptance price is ${currencyFormatter.format(
+        )} ${this.$t('text_02')} ${currencyFormatter.format(
           seller.value
-        )}. The difference is ${currencyFormatter.format(
+        )}. ${this.$t('text_03')} ${currencyFormatter.format(
           buyer.value - seller.value
         )}`
         console.log('**** RESULT CHANGE', n)
         console.log('**** MODAL', this.$refs.resultModal.$refs['modal'])
         if (n) {
-          this.modal.title = 'Awarded'
+          this.modal.title = `${this.$t('awared')}`
           return this.$refs.resultModal.$refs['modal'].show('result-modal')
         }
         if (n === false) {
           console.log('**** HERE')
-          this.modal.title = 'Sale lost'
+          this.modal.title = `${this.$t('lost')}`
           return this.$refs.resultModal.$refs['modal'].show('result-modal')
         }
         return

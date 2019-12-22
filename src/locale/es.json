@@ -6,5 +6,10 @@
   "input_description": "Por favor, introduce un valor en",
   "input_buyer_placeholder": "Oferta",
   "input_seller_placeholder": "Precio Mínimo",
-  "save_button": "Guardar"
+  "save_button": "Guardar",
+  "awared": "Adjudicado",
+  "lost": "No adjudicado",
+  "text_01": "El comprador ofrecio",
+  "text_02": "y tu precio mínimo fue de",
+  "text_03": "La diferencia es"
 }

@@ -6,5 +6,10 @@
   "input_description": "Please introduce a value in",
   "input_buyer_placeholder": "Offer",
   "input_seller_placeholder": "Minimun offer",
-  "save_button": "Save"
+  "save_button": "Save",
+  "awared": "Awared",
+  "lost": "No awared",
+  "text_01": "The buyer offer you",
+  "text_02": "and you minimun acceptance price was",
+  "text_03": "The difference is"
 }
