@@ -25,7 +25,6 @@ export const initializeAppState = (state, payload) => {
 }
 
 export const setLanguage = (state, lang) => {
-  console.log(lang)
   state.curLanguage = lang
 }
 

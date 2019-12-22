@@ -100,7 +100,6 @@ export default {
     getWeatherData(state) {
       const { name, main } = state.weather
       const tempUnit = appConfig.tempUnit
-      console.log(appConfig)
       return Object.keys(state.weather).length > 0
         ? {
             city: name ? name : '',
@@ -116,7 +115,6 @@ export default {
       this.$refs[modal].show()
     },
     resetApp() {
-      console.log('**** APP RESET')
       this.initializeAppState(initialState.auction)
       this.changeActiveTab(this.tabs)
       this.$refs.resultModal.$refs['modal'].toggle('result-modal')
@@ -124,7 +122,6 @@ export default {
   },
   watch: {
     selectedLanguage(newLang) {
-      console.log('new lang selected', newLang)
       Vue.i18n.set(newLang)
       this.$store.commit('setLanguage', newLang)
     },
@@ -139,6 +136,7 @@ export default {
         setTimeout(() => {
           this.$store.dispatch('getWeather')
         }, 3000)
+
         this.modal.content = `${this.$t('text_01')}: ${currencyFormatter.format(
           buyer.value
         )} ${this.$t('text_02')} ${currencyFormatter.format(
@@ -146,17 +144,17 @@ export default {
         )}. ${this.$t('text_03')} ${currencyFormatter.format(
           buyer.value - seller.value
         )}`
-        console.log('**** RESULT CHANGE', n)
-        console.log('**** MODAL', this.$refs.resultModal.$refs['modal'])
+
         if (n) {
           this.modal.title = `${this.$t('awared')}`
           return this.$refs.resultModal.$refs['modal'].show()
         }
+
         if (n === false) {
-          console.log('**** HERE')
           this.modal.title = `${this.$t('lost')}`
           return this.$refs.resultModal.$refs['modal'].show()
         }
+
         return
       },
       { deep: true }

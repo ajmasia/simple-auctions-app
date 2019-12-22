@@ -71,7 +71,6 @@ export default {
     ...mapMutations(['changeActiveTab', 'setFormValue', 'setSuccess']),
 
     onSave(model, tabs) {
-      console.log('**** ONSAVE')
       this.$v.value.$touch()
       if (this.$v.value.$invalid) {
         return
@@ -82,10 +81,8 @@ export default {
           parseInt(this.auction.buyer.value, 10) >=
             parseInt(this.auction.seller.value, 10) &&
           this.auction.seller.value !== null
-        console.log('**** ACTION_RESULT', auctionResult)
         this.setSuccess(auctionResult)
       } else {
-        console.log('**** BUYER CLICK')
         this.changeActiveTab(tabs)
       }
       this.value = null

@@ -18,7 +18,6 @@ export default {
     ...mapMutations(['initializeAppState']),
   },
   created() {
-    console.log('**** APP CREATED')
     this.initializeAppState(initialState.auction)
     Vue.i18n.set(this.$store.state.curLanguage)
   },
