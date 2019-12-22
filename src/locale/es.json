@@ -1,0 +1,10 @@
+{
+  "appTitle": "Subastas app",
+  "appSubtitle": "Jugando con Vue.js",
+  "buyer": "Comprador",
+  "seller": "Vendedor",
+  "input_description": "Por favor, introduce un valor en",
+  "input_buyer_placeholder": "Oferta",
+  "input_seller_placeholder": "Precio Mínimo",
+  "save_button": "Guardar"
+}

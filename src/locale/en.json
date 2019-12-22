@@ -1,0 +1,10 @@
+{
+  "appTitle": "Auction app",
+  "appSubtitle": "Playing with Vue.js",
+  "buyer": "Buyer",
+  "seller": "Seller",
+  "input_description": "Please introduce a value in",
+  "input_buyer_placeholder": "Offer",
+  "input_seller_placeholder": "Minimun offer",
+  "save_button": "Save"
+}
