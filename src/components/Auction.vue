@@ -46,6 +46,16 @@
             </b-tabs>
           </b-card>
         </div>
+        <div class="pt-3">
+          <b-button
+            size="sm"
+            class="float-right"
+            variant="primary"
+            @click="$router.push('/')"
+          >
+            Return to home
+          </b-button>
+        </div>
       </div>
     </div>
     <ResultModal
@@ -118,11 +128,6 @@ export default {
       Vue.i18n.set(newLang)
       this.$store.commit('setLanguage', newLang)
     },
-  },
-  created() {
-    Vue.i18n.set(this.$store.state.curLanguage)
-    // Uncomment the next line if you want to have openWeather information from the beginning
-    // this.$store.dispatch('getWeather')
   },
   mounted() {
     this.$store.watch(

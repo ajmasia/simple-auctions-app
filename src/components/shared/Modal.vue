@@ -11,23 +11,28 @@
     <template v-slot:modal-footer>
       <div class="w-100">
         <b-spinner
+          small
           type="grow"
           label="Spinning"
           v-if="weatherData === null"
         ></b-spinner>
         <p
-          class="float-left"
+          class="float-left mb-0"
           v-if="weatherError === '' && weatherData !== null"
         >
-          Temperature in {{ weatherData.city }}:
+          {{ $t('temp_message') }} {{ weatherData.city }}:
           {{ weatherData.temp ? weatherData.temp.temp : '' }}
           {{ weatherData.tempUnit }}
         </p>
         <p class="float-left" v-if="weatherError !== ''">
           {{ weatherError }}
         </p>
-
-        <b-button size="sm" class="float-right" @click="onFinish">
+        <b-button
+          size="sm"
+          class="float-right"
+          variant="primary"
+          @click="onFinish"
+        >
           Finish
         </b-button>
       </div>

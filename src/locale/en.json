@@ -13,5 +13,6 @@
   "text_02": "and you minimun acceptance price was",
   "text_03": "The difference is",
   "language_selection": "Please, select your preferred langauage",
-  "api_service_error": "OpenWeather connection error"
+  "api_service_error": "OpenWeather connection error",
+  "temp_message": "Temperature in"
 }

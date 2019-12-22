@@ -1,13 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home'
+import Main from '../views/Main.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'main',
+    component: Main,
+    meta: {
+      reload: true,
+    },
+  },
+  {
+    path: '/app',
+    name: 'app',
     component: Home,
   },
 ]
