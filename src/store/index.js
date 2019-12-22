@@ -1,13 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import openWeatherApi from '../api/openWeather'
+import vuexI18n from 'vuex-i18n'
+
+import en from '../locale/en.json'
+import es from '../locale/es.json'
+// import { appConfig } from '../../config'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     auction: {},
     weather: {},
+    curLanguage: 'es',
+    languages: [
+      {
+        locale: 'en',
+        text: 'English',
+      },
+      {
+        locale: 'es',
+        text: 'Español',
+      },
+    ],
   },
   mutations: {
     changeActiveTab(state, tabs) {
@@ -28,6 +44,10 @@ export default new Vuex.Store({
     },
     initializeAppState(state, payload) {
       state.auction = { ...state.auction, ...payload }
+    },
+    setLanguage(state, lang) {
+      console.log(lang)
+      state.curLanguage = lang
     },
     GET_WEATHER_DATA(state) {
       openWeatherApi
@@ -53,3 +73,10 @@ export default new Vuex.Store({
     getSellerValue: state => () => state.seller.value,
   },
 })
+
+Vue.use(vuexI18n.plugin, store)
+// Vue.i18n.set('es')
+Vue.i18n.add('en', en)
+Vue.i18n.add('es', es)
+
+export default store
