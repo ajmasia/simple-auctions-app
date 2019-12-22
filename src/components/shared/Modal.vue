@@ -1,7 +1,6 @@
 <template>
   <b-modal
     id="result-modal"
-    centered
     :title="title"
     ref="modal"
     no-close-on-backdrop

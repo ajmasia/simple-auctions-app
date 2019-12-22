@@ -1,10 +1,8 @@
 <template>
-  <div class="pt-5">
-    <div class="col">
-      <b-jumbotron
-        :header="$t('appTitle')"
-        :lead="$t('appSubtitle')"
-      ></b-jumbotron>
+  <div class="pt-5 ">
+    <div class="text-center">
+      <h1>{{ $t('appTitle') }}</h1>
+      {{ $t('appSubtitle') }}
     </div>
     <Auction />
   </div>
