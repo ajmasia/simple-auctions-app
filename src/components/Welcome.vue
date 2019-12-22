@@ -1,8 +1,5 @@
 <template>
   <div class="pt-5">
-    <b-alert show variant="warning" v-if="auction.seller.active">
-      Warning Alert
-    </b-alert>
     <h2>Welcome to the app</h2>
     <p>
       This is a simple auction project to play with vue.js.

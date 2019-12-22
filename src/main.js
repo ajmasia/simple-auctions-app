@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import BootstrapVue from 'bootstrap-vue'
 import Vuelidate from 'vuelidate'
+import VAnimateCss from 'v-animate-css'
 
 // Styles
 import './theme/index.scss'
@@ -11,6 +12,7 @@ import './theme/index.scss'
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(Vuelidate)
+Vue.use(VAnimateCss)
 
 new Vue({
   router,

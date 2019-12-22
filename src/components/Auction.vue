@@ -150,12 +150,12 @@ export default {
         console.log('**** MODAL', this.$refs.resultModal.$refs['modal'])
         if (n) {
           this.modal.title = `${this.$t('awared')}`
-          return this.$refs.resultModal.$refs['modal'].show('result-modal')
+          return this.$refs.resultModal.$refs['modal'].show()
         }
         if (n === false) {
           console.log('**** HERE')
           this.modal.title = `${this.$t('lost')}`
-          return this.$refs.resultModal.$refs['modal'].show('result-modal')
+          return this.$refs.resultModal.$refs['modal'].show()
         }
         return
       },
