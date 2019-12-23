@@ -4,7 +4,9 @@
       <!-- Auction component -->
       <div class="col-md-8 col-lg-6 col-12" v-animate-css="'fadeIn'">
         <!-- Lanaguge selector -->
-        <b-form-text id="password-help-block">{{ $t('language_selection') }}</b-form-text>
+        <b-form-text id="password-help-block">
+          {{ $t('language_selection') }}
+        </b-form-text>
         <b-form-select
           v-model="selectedLanguage"
           :options="languages"
@@ -52,7 +54,9 @@
             class="float-right"
             variant="primary"
             @click="$router.push('/')"
-          >Return to home</b-button>
+          >
+            Return to home
+          </b-button>
         </div>
       </div>
     </div>
