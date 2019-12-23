@@ -9,7 +9,7 @@
           :placeholder="labelText"
           :state="$v.value.$dirty ? !$v.value.$error : null"
         ></b-input>
-        <b-form-text id="password-help-block">
+        <b-form-text v-if="!getValidateMessage" id="password-help-block">
           {{ $t('input_description') }} {{ currency }}
         </b-form-text>
         <b-form-invalid-feedback id="input-2-live-feedback">
@@ -29,9 +29,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { mapState, mapMutations } from 'vuex'
 import { required, decimal, minValue } from 'vuelidate/lib/validators'
 import { appConfig } from '../../../config.js'
+import { checkAuction } from './model'
 export default {
   name: 'InLineForm',
   data() {
@@ -49,7 +51,7 @@ export default {
     value: {
       required,
       decimal,
-      minValue: minValue(0),
+      minValue: minValue(1),
     },
   },
   computed: {
@@ -59,7 +61,8 @@ export default {
       if (this.$v.value.$error) {
         for (let key in this.$options.messages) {
           if (this.$v.value[key] === false) {
-            return this.$options.messages[key]
+            console.log(this.$options.messages)
+            return Vue.i18n.translate(key)
           }
         }
       } else {
@@ -75,12 +78,11 @@ export default {
       if (this.$v.value.$invalid) {
         return
       }
+
       this.setFormValue({ value: this.value, model: this.model })
+      const { buyer, seller } = this.auction
       if (model === 'seller') {
-        const auctionResult =
-          parseInt(this.auction.buyer.value, 10) >=
-            parseInt(this.auction.seller.value, 10) &&
-          this.auction.seller.value !== null
+        const auctionResult = checkAuction(buyer.value, seller.value)
         this.setSuccess(auctionResult)
       } else {
         this.changeActiveTab(tabs)
@@ -90,9 +92,9 @@ export default {
     },
   },
   messages: {
-    required: 'This field is required',
-    decimal: 'May only contain numbers',
-    minValue: 'May only contain positive numbers',
+    required,
+    decimal,
+    minValue,
   },
 }
 </script>

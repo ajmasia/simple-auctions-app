@@ -12,7 +12,11 @@
               :active="auction['buyer'].active"
             >
               <b-card-text>
-                <InLineForm :labelText="$t('input_buyer_placeholder')" model="buyer" :tabs="tabs" />
+                <InLineForm
+                  :labelText="$t('input_buyer_placeholder')"
+                  model="buyer"
+                  :tabs="tabs"
+                />
               </b-card-text>
             </b-tab>
             <b-tab
@@ -36,7 +40,9 @@
             class="float-right"
             variant="primary"
             @click="$router.push('/')"
-          >{{$t('return-button')}}</b-button>
+          >
+            {{ $t('return-button') }}
+          </b-button>
         </div>
       </div>
     </div>
@@ -54,11 +60,11 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import InLineForm from './shared/InLineForm'
-import ResultModal from './shared/Modal'
-import { initialState } from '../store/store.model.js'
-import { generateModal } from '../tools/auction.js'
-import { appConfig } from '../../config.js'
+import InLineForm from '../InLineForm/index'
+import ResultModal from '../Modal'
+import { initialState } from '../../store/store.model.js'
+import { generateModal } from './model'
+import { appConfig } from '../../../config.js'
 
 export default {
   name: 'Auction',

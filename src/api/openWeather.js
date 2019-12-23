@@ -6,7 +6,6 @@ const apiClient = axios.create({
   baseURL: `${appConfig.openWeatherAPIUrl}`,
   withCredentials: false,
   headers: {
-    // some HTTP headers
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
@@ -18,5 +17,3 @@ export default {
     return apiClient.get(url)
   },
 }
-
-// https://api.openweathermap.org/data/2.5/forecast?units=metric&lat=${coords.lat}&lon=${coords.lng}&appid=${state.owmApiKey}`

@@ -10,9 +10,6 @@ const routes = [
     path: '/',
     name: 'main',
     component: Main,
-    meta: {
-      reload: true,
-    },
   },
   {
     path: '/app',

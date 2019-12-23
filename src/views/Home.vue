@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Auction from '../components/Auction'
+import Auction from '../components/Auction/index'
 export default {
   name: 'home',
   components: {

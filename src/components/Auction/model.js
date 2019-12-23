@@ -1,11 +1,5 @@
 import Vue from 'vue'
-import { appConfig } from '../../config'
-
-export const currencyFormatter = new Intl.NumberFormat('es-ES', {
-  style: 'currency',
-  currency: appConfig.currency,
-  minimumFractionDigits: appConfig.currencyDigits,
-})
+import { currencyFormatter } from '../../tools/index'
 
 export const getModalText = (buyerValue, sellerValue) => {
   return `${Vue.i18n.translate('modal_text_01')}: ${currencyFormatter.format(
