@@ -20,5 +20,8 @@
   "wellcome_subtitle": "Esta es una sencilla app de subastas para jugar con vue.js",
   "wellcome_text_01": "Como comprador, tienes que introducir el precio máximo que pagarías por el producto, y como vendodr, tienes que introducir el precio mínimo por el cuál venderías el producto.",
   "wellcome_text_02": "Finalmente, la app mostrará un popup con el sesultado de la subasta.",
-  "enyoy-button": "Disfruta"
+  "enyoy-button": "Disfruta",
+  "required": "Campo es requerido",
+  "decimal": "Sólo puede contener números",
+  "minValue": "Sólo pueden ser números positivos mayores o iuales a 1"
 }

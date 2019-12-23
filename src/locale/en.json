@@ -20,5 +20,8 @@
   "wellcome_subtitle": "This is a simple auction project to play with vue.js",
   "wellcome_text_01": "As a buyer, you have to enter the maximum price you are willing to pay for a product, and as a seller, you have to enter the minimum price for which you are willing to sell the product.",
   "wellcome_text_02": "Finally, the app will show your the result in a simple popup.",
-  "enyoy-button": "Enjoy"
+  "enyoy-button": "Enjoy",
+  "required": "Required dield",
+  "decimal": "May only contains numbers",
+  "minValue": "May only contains positive numbers greater than or equal to 1"
 }
