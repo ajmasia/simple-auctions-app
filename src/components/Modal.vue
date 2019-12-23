@@ -16,13 +16,25 @@
           label="Spinning"
           v-if="weatherData === null && weatherError === null"
         ></b-spinner>
-        <p class="float-left mb-0" v-if="weatherError === null && weatherData !== null">
+        <p
+          class="float-left mb-0"
+          v-if="weatherError === null && weatherData !== null"
+        >
           {{ $t('temp_message') }} {{ weatherData.city }}:
           {{ weatherData.temp ? weatherData.temp.temp : '' }}
           {{ weatherData.tempUnit }}
         </p>
-        <p class="float-left" v-if="weatherError !== null">{{ weatherError }}</p>
-        <b-button size="sm" class="float-right" variant="primary" @click="onFinish">Finish</b-button>
+        <p class="float-left" v-if="weatherError !== null">
+          {{ weatherError }}
+        </p>
+        <b-button
+          size="sm"
+          class="float-right"
+          variant="primary"
+          @click="onFinish"
+        >
+          Finish
+        </b-button>
       </div>
     </template>
   </b-modal>
