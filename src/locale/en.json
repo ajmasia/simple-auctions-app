@@ -23,5 +23,6 @@
   "enyoy-button": "Enjoy",
   "required": "Required dield",
   "decimal": "May only contains numbers",
-  "minValue": "May only contains positive numbers greater than or equal to 1"
+  "minValue": "May only contains positive numbers greater than or equal to 1",
+  "alert": "There are an active auction"
 }

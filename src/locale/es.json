@@ -23,5 +23,6 @@
   "enyoy-button": "Disfruta",
   "required": "Campo es requerido",
   "decimal": "Sólo puede contener números",
-  "minValue": "Sólo pueden ser números positivos mayores o iuales a 1"
+  "minValue": "Sólo pueden ser números positivos mayores o iuales a 1",
+  "alert": "Hay una subasta activa"
 }
