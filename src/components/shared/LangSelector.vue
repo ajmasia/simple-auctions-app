@@ -1,6 +1,8 @@
 <template>
   <div>
-    <b-form-text id="password-help-block">{{ $t('language_selection') }}</b-form-text>
+    <b-form-text id="password-help-block">
+      {{ $t('language_selection') }}
+    </b-form-text>
     <b-form-select
       v-model="selectedLanguage"
       :options="languages"

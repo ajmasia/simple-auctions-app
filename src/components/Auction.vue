@@ -42,7 +42,9 @@
             class="float-right"
             variant="primary"
             @click="$router.push('/')"
-          >Return to home</b-button>
+          >
+            Return to home
+          </b-button>
         </div>
       </div>
     </div>
