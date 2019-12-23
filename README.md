@@ -38,7 +38,6 @@ Ussing HTTPS: `git clone git@github.com:ajmasia/simple_auctions_app.git`
 | `npm run test:unit` | Run app testing                    |
 | `npm run lint`      | Run linter tool to fix code issues |
 
-
 ## Documentation
 
 This project it's a simple auction application. As a buyer, you have to enter the maximum price you are willing to pay for a product, and as a seller, you have to enter the minimum price for which you are willing to sell the product. Finally, the app will show your the result in a simple popup.
@@ -65,19 +64,29 @@ export const appConfig = {
 }
 ```
 
+To get the data from `Huesca`, you need to config this coords:
+
+```json
+{
+  lat: 42.1382,
+  long: -0.4081,
+},
+```
+
 ## Technologies
 
 This project use the next tecnologies:
 
 - [Vue.js](https://vuejs.org/) as project core technology.
-- [Vuelidate](https://github.com/vuelidate/vuelidate) to validate forms.
 - [Vuex](https://vuex.vuejs.org/guide/) to project state management.
+- [Vue router](https://router.vuejs.org/) to app routing.
+- [Vuelidate](https://github.com/vuelidate/vuelidate) to validate forms.
 - [Vuex-i18n](https://github.com/dkfbasel/vuex-i18n) to project localization.
 - [Vue Boostrap](https://bootstrap-vue.js.org/) to project components.
 - [v-animate-css](https://github.com/jofftiquez/v-animate-css) to use css animations
 - [eslint](https://eslint.org/) to find and fix problems in your JavaScript code
 - [Prettier](https://prettier.io/) to code format
-- [Husky](https://github.com/typicode/husky) to prevent bad code before push code to the repo 
+- [Husky](https://github.com/typicode/husky) to prevent bad code before push code to the repo
 
 ## Changelog
 
