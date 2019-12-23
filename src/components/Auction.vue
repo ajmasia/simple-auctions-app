@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="d-flex justify-content-center pt-5">
-      <div class="col-md-8 col-lg-6 col-12">
-        <b-form-text id="password-help-block">
-          {{ $t('language_selection') }}
-        </b-form-text>
+      <!-- Auction component -->
+      <div class="col-md-8 col-lg-6 col-12" v-animate-css="'fadeIn'">
+        <!-- Lanaguge selector -->
+        <b-form-text id="password-help-block">{{ $t('language_selection') }}</b-form-text>
         <b-form-select
           v-model="selectedLanguage"
           :options="languages"
@@ -13,7 +13,7 @@
           text-field="text"
           disabled-field="notEnabled"
         ></b-form-select>
-
+        <!-- Tabs -->
         <div class="pt-3">
           <b-card no-body>
             <b-tabs pills card>
@@ -52,19 +52,18 @@
             class="float-right"
             variant="primary"
             @click="$router.push('/')"
-          >
-            Return to home
-          </b-button>
+          >Return to home</b-button>
         </div>
       </div>
     </div>
+    <!-- Modal -->
     <ResultModal
-      :title="modal.title"
-      :content="modal.content"
+      :title="modalConfig.title"
+      :content="modalConfig.content"
       :onFinish="resetApp"
       :weatherData="getWeatherData"
       :weatherError="weatherError"
-      ref="resultModal"
+      ref="result-modal"
     />
   </div>
 </template>
@@ -75,7 +74,7 @@ import { mapState, mapMutations } from 'vuex'
 import InLineForm from './shared/InLineForm'
 import ResultModal from './shared/Modal'
 import { initialState } from '../store/store.model.js'
-import { currencyFormatter } from '../tools/index.js'
+import { generateModal } from '../tools/auction.js'
 import { appConfig } from '../../config.js'
 
 export default {
@@ -88,7 +87,7 @@ export default {
   data: function() {
     return {
       tabs: ['buyer', 'seller'],
-      modal: {
+      modalConfig: {
         title: '',
         content: '',
       },
@@ -96,7 +95,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['auction', 'weather', 'languages', 'weatherError']),
+    ...mapState(['auction', 'weather', 'languages', 'weatherError', 'success']),
     getWeatherData(state) {
       const { name, main } = state.weather
       const tempUnit = appConfig.tempUnit
@@ -111,13 +110,10 @@ export default {
   },
   methods: {
     ...mapMutations(['changeActiveTab', 'initializeAppState']),
-    showModal(modal) {
-      this.$refs[modal].show()
-    },
     resetApp() {
       this.initializeAppState(initialState.auction)
       this.changeActiveTab(this.tabs)
-      this.$refs.resultModal.$refs['modal'].toggle('result-modal')
+      this.$refs['result-modal'].$refs['modal'].toggle('result-modal')
     },
   },
   watch: {
@@ -127,38 +123,20 @@ export default {
     },
   },
   mounted() {
-    this.$store.watch(
-      this.$store.getters.getSuccess,
-      n => {
-        const { buyer, seller } = this.auction
+    const auctionModal = this.$refs['result-modal'].$refs['modal']
 
+    this.$store.subscribe((mutation, state) => {
+      if (mutation.type === 'setSuccess') {
         // Delete seTimeout method to get data whitout delay
         setTimeout(() => {
           this.$store.dispatch('getWeather')
         }, 3000)
 
-        this.modal.content = `${this.$t('text_01')}: ${currencyFormatter.format(
-          buyer.value
-        )} ${this.$t('text_02')} ${currencyFormatter.format(
-          seller.value
-        )}. ${this.$t('text_03')} ${currencyFormatter.format(
-          buyer.value - seller.value
-        )}`
-
-        if (n) {
-          this.modal.title = `${this.$t('awared')}`
-          return this.$refs.resultModal.$refs['modal'].show()
-        }
-
-        if (n === false) {
-          this.modal.title = `${this.$t('lost')}`
-          return this.$refs.resultModal.$refs['modal'].show()
-        }
+        generateModal(state, auctionModal, this.modalConfig)
 
         return
-      },
-      { deep: true }
-    )
+      }
+    })
   },
 }
 </script>
