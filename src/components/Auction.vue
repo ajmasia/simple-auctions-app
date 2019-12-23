@@ -2,19 +2,7 @@
   <div>
     <div class="d-flex justify-content-center pt-5">
       <!-- Auction component -->
-      <div class="col-md-8 col-lg-6 col-12" v-animate-css="'fadeIn'">
-        <!-- Lanaguge selector -->
-        <b-form-text id="password-help-block">
-          {{ $t('language_selection') }}
-        </b-form-text>
-        <b-form-select
-          v-model="selectedLanguage"
-          :options="languages"
-          class="mb-3"
-          value-field="locale"
-          text-field="text"
-          disabled-field="notEnabled"
-        ></b-form-select>
+      <div class="col-md-8 col-lg-8 col-12" v-animate-css="'fadeIn'">
         <!-- Tabs -->
         <div class="pt-3">
           <b-card no-body>
@@ -54,9 +42,7 @@
             class="float-right"
             variant="primary"
             @click="$router.push('/')"
-          >
-            Return to home
-          </b-button>
+          >Return to home</b-button>
         </div>
       </div>
     </div>
@@ -73,7 +59,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { mapState, mapMutations } from 'vuex'
 import InLineForm from './shared/InLineForm'
 import ResultModal from './shared/Modal'
@@ -95,7 +80,6 @@ export default {
         title: '',
         content: '',
       },
-      selectedLanguage: this.$store.state.curLanguage,
     }
   },
   computed: {
@@ -118,12 +102,6 @@ export default {
       this.initializeAppState(initialState.auction)
       this.changeActiveTab(this.tabs)
       this.$refs['result-modal'].$refs['modal'].toggle('result-modal')
-    },
-  },
-  watch: {
-    selectedLanguage(newLang) {
-      Vue.i18n.set(newLang)
-      this.$store.commit('setLanguage', newLang)
     },
   },
   mounted() {

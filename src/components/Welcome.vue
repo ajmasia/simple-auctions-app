@@ -9,14 +9,7 @@
         which you are willing to sell the product. Finally, the app will show
         you the resuly in a simple popup.
       </p>
-      <b-button
-        size="sm"
-        class="float-right"
-        variant="primary"
-        @click="$router.push('app')"
-      >
-        Enyoy
-      </b-button>
+      <b-button size="sm" class="float-right" variant="primary" @click="$router.push('app')">Enyoy</b-button>
     </div>
   </div>
 </template>
