@@ -9,10 +9,16 @@
   "save_button": "Guardar",
   "awared": "Adjudicado",
   "lost": "No adjudicado",
-  "text_01": "El comprador ofrecio",
-  "text_02": "y tu precio mínimo fue de",
-  "text_03": "La diferencia es",
+  "modal_text_01": "El comprador ofrecio",
+  "modal_text_02": "y tu precio mínimo fue de",
+  "modal_text_03": "La diferencia es",
   "language_selection": "Por favor, selecciona tu idioma preferido",
   "api_service_error": "Error de conexion a OpenWeather",
-  "temp_message": "Temperatura en"
+  "temp_message": "Temperatura en",
+  "return-button": "Volver al inicio",
+  "wellcome_title": "Bienvenido!",
+  "wellcome_subtitle": "Esta es una sencilla app de subastas para jugar con vue.js",
+  "wellcome_text_01": "Como comprador, tienes que introducir el precio máximo que pagarías por el producto, y como vendodr, tienes que introducir el precio mínimo por el cuál venderías el producto.",
+  "wellcome_text_02": "Finalmente, la app mostrará un popup con el sesultado de la subasta.",
+  "enyoy-button": "Disfruta"
 }

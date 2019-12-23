@@ -4,47 +4,39 @@
       <!-- Auction component -->
       <div class="col-md-8 col-lg-8 col-12" v-animate-css="'fadeIn'">
         <!-- Tabs -->
-        <div class="pt-3">
-          <b-card no-body>
-            <b-tabs pills card>
-              <b-tab
-                :title="$t('buyer')"
-                :disabled="auction['buyer'].disabled"
-                :active="auction['buyer'].active"
-              >
-                <b-card-text>
-                  <InLineForm
-                    :labelText="$t('input_buyer_placeholder')"
-                    model="buyer"
-                    :tabs="tabs"
-                  />
-                </b-card-text>
-              </b-tab>
-              <b-tab
-                :title="$t('seller')"
-                :disabled="auction['seller'].disabled"
-                :active="auction['seller'].active"
-              >
-                <b-card-text>
-                  <InLineForm
-                    :labelText="$t('input_seller_placeholder')"
-                    model="seller"
-                    :tabs="tabs"
-                  />
-                </b-card-text>
-              </b-tab>
-            </b-tabs>
-          </b-card>
-        </div>
+        <b-card no-body>
+          <b-tabs pills card>
+            <b-tab
+              :title="$t('buyer')"
+              :disabled="auction['buyer'].disabled"
+              :active="auction['buyer'].active"
+            >
+              <b-card-text>
+                <InLineForm :labelText="$t('input_buyer_placeholder')" model="buyer" :tabs="tabs" />
+              </b-card-text>
+            </b-tab>
+            <b-tab
+              :title="$t('seller')"
+              :disabled="auction['seller'].disabled"
+              :active="auction['seller'].active"
+            >
+              <b-card-text>
+                <InLineForm
+                  :labelText="$t('input_seller_placeholder')"
+                  model="seller"
+                  :tabs="tabs"
+                />
+              </b-card-text>
+            </b-tab>
+          </b-tabs>
+        </b-card>
         <div class="pt-3">
           <b-button
             size="sm"
             class="float-right"
             variant="primary"
             @click="$router.push('/')"
-          >
-            Return to home
-          </b-button>
+          >{{$t('return-button')}}</b-button>
         </div>
       </div>
     </div>
