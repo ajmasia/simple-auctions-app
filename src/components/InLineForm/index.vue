@@ -9,21 +9,18 @@
           :placeholder="labelText"
           :state="$v.value.$dirty ? !$v.value.$error : null"
         ></b-input>
-        <b-form-text v-if="!getValidateMessage" id="password-help-block">
-          {{ $t('input_description') }} {{ currency }}
-        </b-form-text>
-        <b-form-invalid-feedback id="input-2-live-feedback">
-          {{ getValidateMessage }}
-        </b-form-invalid-feedback>
+        <b-form-text
+          v-if="!getValidateMessage"
+          id="password-help-block"
+        >{{ $t('input_description') }} {{ currency }}</b-form-text>
+        <b-form-invalid-feedback id="input-2-live-feedback">{{ getValidateMessage }}</b-form-invalid-feedback>
       </div>
       <b-button
         class="btn-block mt-4"
         :disabled="$v.value.$invalid"
         variant="primary"
         v-on:click="onSave(model, tabs)"
-      >
-        {{ $t('save_button') }}
-      </b-button>
+      >{{ $t('save_button') }}</b-button>
     </b-form>
   </div>
 </template>
@@ -61,7 +58,6 @@ export default {
       if (this.$v.value.$error) {
         for (let key in this.$options.messages) {
           if (this.$v.value[key] === false) {
-            console.log(this.$options.messages)
             return Vue.i18n.translate(key)
           }
         }

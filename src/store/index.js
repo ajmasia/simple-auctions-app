@@ -13,7 +13,7 @@ const store = new Vuex.Store({
   state: {
     auction: {},
     weather: {},
-    weatherError: '',
+    weatherError: null,
     curLanguage: 'es',
     languages: [
       {
