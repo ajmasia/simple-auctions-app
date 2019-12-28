@@ -1,24 +1,29 @@
 <template>
   <div>
-    <b-form-text id="password-help-block">
+    <BFormText id="password-help-block">
       {{ $t('language_selection') }}
-    </b-form-text>
-    <b-form-select
+    </BFormText>
+    <BFormSelect
       v-model="selectedLanguage"
       :options="languages"
       class="mb-3"
       value-field="locale"
       text-field="text"
       disabled-field="notEnabled"
-    ></b-form-select>
+    ></BFormSelect>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import { mapState } from 'vuex'
+import { BFormSelect, BFormText } from 'bootstrap-vue'
 export default {
   name: 'lang-selector',
+  components: {
+    BFormSelect,
+    BFormText,
+  },
   data: function() {
     return {
       selectedLanguage: this.$store.state.curLanguage,
