@@ -16,6 +16,7 @@
   - [App config](#app-config)
   - [Technologies](#technologies)
   - [Changelog](#changelog)
+    - [Version 0.1.1](#version-011)
     - [Version 0.1.0](#version-010)
 
 ## Install
@@ -92,6 +93,11 @@ This project use the next tecnologies:
 - [Husky](https://github.com/typicode/husky) to prevent bad code before push code to the repo
 
 ## Changelog
+
+### Version 0.1.1
+
+- Refactor some code parts.
+- Add some app test.
 
 ### Version 0.1.0
 
