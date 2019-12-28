@@ -5,7 +5,7 @@ import * as mutations from '@/store/store.mutations'
 import { initialAuctionState } from '@/store/store.state.js'
 
 describe('Store', () => {
-  it('initialize state', () => {
+  it('initialize auction state', () => {
     mutations.initializeAppState(store.state, initialAuctionState)
     expect(store.state.auction).to.eql(initialAuctionState)
   })
