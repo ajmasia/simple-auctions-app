@@ -42,6 +42,8 @@ Ussing HTTPS: `git clone git@github.com:ajmasia/simple_auctions_app.git`
 
 This project it's a simple auction application. As a buyer, you have to enter the maximum price you are willing to pay for a product, and as a seller, you have to enter the minimum price for which you are willing to sell the product. Finally, the app will show your the result in a simple popup.
 
+If you are in the middle of an auction and return to the home, the user receives a notification.
+
 ## App config
 
 This project use the OpenWeather API to get cities weather data. You will need a valid API key to use it. Currently the project use a `setTimeout` to simulate a Delay while the app receive new data and can show an spinner.
