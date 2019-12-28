@@ -7,26 +7,12 @@ import es from '../locale/es.json'
 
 import * as mutations from './store.mutations.js'
 import * as actions from './store.actions'
+import { state } from './store.state'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  state: {
-    auction: {},
-    weather: {},
-    weatherError: null,
-    curLanguage: 'es',
-    languages: [
-      {
-        locale: 'en',
-        text: 'English',
-      },
-      {
-        locale: 'es',
-        text: 'Español',
-      },
-    ],
-  },
+  state,
   mutations,
   actions,
   modules: {},

@@ -62,7 +62,7 @@
 import { mapState, mapMutations } from 'vuex'
 import InLineForm from '../InLineForm/index'
 import ResultModal from '../Modal'
-import { initialState } from '../../store/store.model.js'
+import { initialAuctionState } from '../../store/store.state.js'
 import { generateModal } from './model'
 import { appConfig } from '../../../config.js'
 
@@ -99,7 +99,7 @@ export default {
   methods: {
     ...mapMutations(['changeActiveTab', 'initializeAppState']),
     resetApp() {
-      this.initializeAppState(initialState.auction)
+      this.initializeAppState(initialAuctionState)
       this.changeActiveTab(this.tabs)
       this.$refs['result-modal'].$refs['modal'].toggle('result-modal')
     },
