@@ -8,7 +8,7 @@
 <script>
 import Vue from 'vue'
 import { mapMutations } from 'vuex'
-import { initialState } from './store/store.model.js'
+import { initialAuctionState } from './store/store.state.js'
 import Header from './components/shared/Header'
 
 export default {
@@ -20,7 +20,7 @@ export default {
     Header,
   },
   created() {
-    this.initializeAppState(initialState.auction)
+    this.initializeAppState(initialAuctionState)
     Vue.i18n.set(this.$store.state.curLanguage)
   },
 }
