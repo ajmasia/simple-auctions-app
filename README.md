@@ -30,13 +30,14 @@ Ussing HTTPS: `git clone git@github.com:ajmasia/simple_auctions_app.git`
 
 ### Playing
 
-| Commad              | Description                        |
-| ------------------- | ---------------------------------- |
-| `npm i`             | Install project dependences        |
-| `npm run serve`     | Run app in dev mode                |
-| `npm run build`     | Build app                          |
-| `npm run test:unit` | Run app testing                    |
-| `npm run lint`      | Run linter tool to fix code issues |
+| Commad                  | Description                        |
+| ----------------------- | ---------------------------------- |
+| `npm i`                 | Install project dependences        |
+| `npm run serve`         | Run app in dev mode                |
+| `npm run build`         | Build app                          |
+| `npm run test:unit`     | Run app tests                      |
+| `npm run test:unit:dev` | Run app testis in dev mode         |
+| `npm run lint`          | Run linter tool to fix code issues |
 
 ## Documentation
 
@@ -46,7 +47,7 @@ If you are in the middle of an auction and return to the home, the user receives
 
 ## App config
 
-This project use the OpenWeather API to get cities weather data. You will need a valid API key to use it. Currently the project use a `setTimeout` to simulate a Delay while the app receive new data and can show an spinner.
+This project use the OpenWeather API to get cities weather data. You will need a valid API key to use it. Currently the project use a `setTimeout` to simulate a Delay while the app receive new data and can show an spinner. Ideally, make the call to the api at the beginning of the app.
 
 Before run the app, you have to install all project dependences and set the config file renaming the `example.config.js` to `config.js`:
 
