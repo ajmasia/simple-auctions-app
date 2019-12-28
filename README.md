@@ -16,7 +16,7 @@
   - [App config](#app-config)
   - [Technologies](#technologies)
   - [Changelog](#changelog)
-    - [Version 0.1.1](#version-011)
+    - [Version 0.2.0](#version-020)
     - [Version 0.1.0](#version-010)
 
 ## Install
@@ -94,7 +94,7 @@ This project use the next tecnologies:
 
 ## Changelog
 
-### Version 0.1.1
+### Version 0.2.0
 
 - Refactor some code parts.
 - Add some app test.
