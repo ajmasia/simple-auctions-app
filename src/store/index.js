@@ -6,7 +6,7 @@ import en from '../locale/en.json'
 import es from '../locale/es.json'
 
 import * as mutations from './store.mutations.js'
-
+import * as actions from './store.actions'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -27,17 +27,8 @@ const store = new Vuex.Store({
     ],
   },
   mutations,
-  actions: {
-    getWeather({ commit }) {
-      commit('getWeatherData')
-    },
-  },
+  actions,
   modules: {},
-  getters: {
-    getSuccess: state => () => state.auction.success,
-    getBuyerValue: state => () => state.buyer.value,
-    getSellerValue: state => () => state.seller.value,
-  },
 })
 
 Vue.use(vuexI18n.plugin, store)
