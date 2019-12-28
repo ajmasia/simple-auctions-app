@@ -7,6 +7,7 @@ import es from '../locale/es.json'
 
 import * as mutations from './store.mutations.js'
 import * as actions from './store.actions'
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
