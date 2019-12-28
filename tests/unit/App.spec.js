@@ -18,4 +18,7 @@ describe('App component', () => {
   it('header renders a correct title', () => {
     expect(headerWrapper.html()).to.contain('Subastas app')
   })
+  it('initial language is es', () => {
+    expect(store.state.curLanguage).to.eql('es')
+  })
 })
