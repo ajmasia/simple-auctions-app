@@ -4,11 +4,7 @@ import store from '@/store'
 import * as mutations from '@/store/store.mutations'
 import { initialAuctionState } from '@/store/store.state.js'
 
-describe('App store', () => {
-  it('auction default state is empty', () => {
-    expect(store.state.auction).to.eql({})
-  })
-
+describe('Store', () => {
   it('initialize state', () => {
     mutations.initializeAppState(store.state, initialAuctionState)
     expect(store.state.auction).to.eql(initialAuctionState)
