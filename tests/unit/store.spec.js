@@ -2,7 +2,7 @@ import { expect } from 'chai'
 
 import store from '@/store'
 import * as mutations from '@/store/store.mutations'
-import { initialState } from '@/store/store.model.js'
+import { initialAuctionState } from '@/store/store.state.js'
 
 describe('App store', () => {
   it('auction default state is empty', () => {
@@ -10,8 +10,8 @@ describe('App store', () => {
   })
 
   it('initialize state', () => {
-    mutations.initializeAppState(store.state, initialState)
-    expect(store.state.auction).to.eql(initialState)
+    mutations.initializeAppState(store.state, initialAuctionState)
+    expect(store.state.auction).to.eql(initialAuctionState)
   })
 
   it('set action success state to true', () => {
